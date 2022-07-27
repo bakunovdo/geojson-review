@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src/",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "solid-js",
+    "noEmit": true,
+    "isolatedModules": true,
+    "types": [
+      "vite/client"
+    ],
+  },
+  "include": [
+    "src"
+  ]
+}
