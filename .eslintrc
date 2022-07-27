@@ -3,10 +3,12 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:solid/recommended",
     "plugin:prettier/recommended"
   ],
   "plugins": [
     "simple-import-sort",
+    "solid",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
