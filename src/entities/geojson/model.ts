@@ -1,8 +1,7 @@
 import { createEvent, createStore } from "effector";
+import { FeatureCollection } from "@turf/turf";
 
 import { setPayload } from "shared/effector/helpers";
-
-import { FeatureCollection } from "@turf/turf";
 
 export const upload = createEvent<FeatureCollection>();
 

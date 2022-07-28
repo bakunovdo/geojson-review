@@ -1,7 +1,7 @@
 import { Component } from "solid-js";
 
 import { Map } from "widgets/mapbox";
-import { Sidebar } from "widgets/sidebar/ui";
+import { Sidebar } from "widgets/sidebar";
 
 export const HomePage: Component = () => {
   return (

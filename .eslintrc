@@ -32,7 +32,7 @@
       "error",
       {
         "groups": [
-          // Side effect imports.
+          // Side effect imports
           [
             "^\\u0000",
             "models/init"
@@ -44,9 +44,10 @@
           [
             "^axios",
             "^react-query",
-            "^effector"
+            "^effector",
+            "^@turf/turf"
           ],
-          //Tests
+          // Tests
           [
             "^@cy"
           ],
@@ -60,6 +61,15 @@
           ],
           [
             "^pages"
+          ],
+          [
+            "^widgets"
+          ],
+          [
+            "^features"
+          ],
+          [
+            "^entities"
           ],
           [
             "^models"

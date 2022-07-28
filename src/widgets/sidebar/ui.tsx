@@ -1,10 +1,10 @@
 import { useUnit } from "effector-solid";
+import { FeatureCollection } from "@turf/turf";
+
+import { geojsonModel } from "entities/geojson";
 
 import { parseJsonFile } from "shared/parser/json";
 import { InputChangeEvent } from "shared/types/solid";
-
-import { FeatureCollection } from "@turf/turf";
-import { geojsonModel } from "entities/geojson";
 
 export const Sidebar = () => {
   const [file, upload] = useUnit([geojsonModel.$file, geojsonModel.upload]);
