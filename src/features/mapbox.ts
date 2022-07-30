@@ -5,6 +5,7 @@ import { mapboxModel } from "entities/mapbox";
 
 import type { FeatureCollection } from "geojson";
 import type { Map } from "mapbox-gl";
+import { debounce } from "patronum";
 
 type Input<T> = { map: Map | null; data: T | null };
 type TypeGuard<T> = { map: Map; data: T };
@@ -28,7 +29,7 @@ sample({
 
 // LI - List Item
 sample({
-  clock: geojsonModel.$currentFeature,
+  clock: debounce({ source: geojsonModel.$currentFeature, timeout: 200 }),
   source: { map: mapboxModel.$map, data: geojsonModel.$currentFeature },
   filter: guardFn<FeatureItem>(),
   fn: ({ map, data }): FnType<"fitBoundsFx"> => {

@@ -88,6 +88,8 @@ function createMapbox(container: HTMLElement) {
     projection: { name: "globe" }, // display the map as a 3D globe
   });
 
+  map.keyboard.disable();
+
   new ResizeObserver(() => map.resize()).observe(container);
 
   return map;
