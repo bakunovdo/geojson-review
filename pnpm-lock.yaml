@@ -9,6 +9,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.31.0
   autoprefixer: ^10.4.7
   effector: ^22.3.0
+  effector-hotkey: ^0.2.1
   effector-solid: ^0.22.1
   eslint: ^8.20.0
   eslint-config-prettier: ^8.5.0
@@ -34,6 +35,7 @@ specifiers:
 dependencies:
   '@turf/turf': 6.5.0
   effector: 22.3.0
+  effector-hotkey: 0.2.1_effector@22.3.0
   effector-solid: 0.22.1_gy47fnhyujeuzimuk7mxzluzxe
   mapbox-gl: 2.9.2
   patronum: 1.9.0_effector@22.3.0
@@ -2191,6 +2193,15 @@ packages:
   /eastasianwidth/0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
+
+  /effector-hotkey/0.2.1_effector@22.3.0:
+    resolution: {integrity: sha512-p6zZKdte4UqPCXAfqwVGCAgkzX4TlXyyNam0daBPIeHDJGDpvA2nWR/BJ+096iqvrGOHkSIPu5O5UiCzYByA5w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      effector: ^22
+    dependencies:
+      effector: 22.3.0
+    dev: false
 
   /effector-solid/0.22.1_gy47fnhyujeuzimuk7mxzluzxe:
     resolution: {integrity: sha512-ltpA9dJMOCXWdDo67bvCzykpXMpWx4dmvFDPkRN5quhH5fEg4Q62yE4u3gBWCC1B5EShBFJSTRgkiPtwEeHrzg==}

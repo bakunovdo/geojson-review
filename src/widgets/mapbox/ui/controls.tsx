@@ -12,8 +12,8 @@ export const Controls = () => {
   });
 
   return (
-    <div class="absolute inset-0 z-10">
-      <div class="absolute right-4 top-1/2 flex flex-col text-lg space-y-4 -translate-y-1/2">
+    <div>
+      <div class="absolute z-10 right-4 top-1/2 flex flex-col text-lg space-y-4 -translate-y-1/2">
         <button class="btn bg-slate-200" onClick={controls.in}>
           +
         </button>
@@ -22,7 +22,7 @@ export const Controls = () => {
         </button>
       </div>
 
-      <div class="absolute bottom-4 left-1/2 -translate-x-1/2">
+      <div class="absolute z-10 bottom-4 left-1/2 -translate-x-1/2">
         <button class="btn bg-slate-200" onClick={() => controls.prev()}>
           {"<-"}
         </button>

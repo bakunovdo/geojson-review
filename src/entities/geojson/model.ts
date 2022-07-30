@@ -1,4 +1,5 @@
 import { createDomain, sample } from "effector";
+import { hotkey } from "effector-hotkey";
 
 import { setPayload } from "shared/lib/effector/helpers";
 
@@ -11,6 +12,9 @@ import { createHashMap } from "./lib";
 import { FeatureItem } from "./types";
 
 const domain = createDomain("gejson");
+
+export const nextPresed = hotkey({ key: "ArrowRight" });
+export const prevPresed = hotkey({ key: "ArrowLeft" });
 
 export const upload = domain.createEvent<FeatureCollection<Geometry>>();
 export const geometryLIClicked = domain.createEvent<FeatureItem>();
@@ -33,20 +37,20 @@ $file.on(upload, setPayload);
 $currentFeature.on(geometryLIClicked, setPayload);
 
 sample({
-  clock: next,
+  clock: [next, nextPresed],
   source: { hash: $hashMap, current: $currentFeature },
   fn: ({ current, hash }) => {
-    if (current) return hash[current.id + 1];
+    if (current) return hash[current.id + 1] || hash[0];
     return hash[0];
   },
   target: $currentFeature,
 });
 
 sample({
-  clock: prev,
+  clock: [prev, prevPresed],
   source: { hash: $hashMap, current: $currentFeature, len: $lengthFeatures },
   fn: ({ current, hash, len }) => {
-    if (current) return hash[current.id - 1];
+    if (current) return hash[current.id - 1] || hash[len - 1];
     return hash[len - 1];
   },
   target: $currentFeature,

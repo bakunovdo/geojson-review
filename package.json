@@ -38,6 +38,7 @@
   "dependencies": {
     "@turf/turf": "^6.5.0",
     "effector": "^22.3.0",
+    "effector-hotkey": "^0.2.1",
     "effector-solid": "^0.22.1",
     "mapbox-gl": "^2.9.2",
     "patronum": "^1.9.0",
