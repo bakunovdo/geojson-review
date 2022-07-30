@@ -1,7 +1,6 @@
 import { useUnit } from "effector-solid";
 
-import { geojsonModel } from "entities/geojson";
-import { FeautureList } from "entities/geojson/ui";
+import { FeaturesList, geojsonModel } from "entities/geojson";
 
 import { parseJsonFile } from "shared/parser/json";
 import { InputChangeEvent } from "shared/types/solid";
@@ -9,6 +8,7 @@ import { InputChangeEvent } from "shared/types/solid";
 import { FeatureCollection } from "geojson";
 
 export const Sidebar = () => {
+  const list = useUnit(geojsonModel.$features);
   const [file, upload] = useUnit([geojsonModel.$file, geojsonModel.upload]);
 
   const onChange = async (e: InputChangeEvent) => {
@@ -19,7 +19,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <div class="w-64 flex-shrink-0 h-full bg-slate-50 p-4 flex flex-col">
+    <div class="w-64 flex-shrink-0 h-full bg-slate-50 p-4 flex flex-col space-y-4">
       <div class="self-end">
         <button class="btn">Close</button>
       </div>
@@ -30,7 +30,7 @@ export const Sidebar = () => {
         <input id="upload" class="hidden" type="file" onChange={onChange} />
       </div>
 
-      <FeautureList />
+      <FeaturesList items={list} />
 
       {file() && (
         <div class="mt-auto mx-auto font-bold text-sm">
