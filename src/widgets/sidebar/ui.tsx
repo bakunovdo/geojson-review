@@ -1,10 +1,12 @@
 import { useUnit } from "effector-solid";
-import { FeatureCollection } from "@turf/turf";
 
 import { geojsonModel } from "entities/geojson";
+import { FeautureList } from "entities/geojson/ui";
 
 import { parseJsonFile } from "shared/parser/json";
 import { InputChangeEvent } from "shared/types/solid";
+
+import { FeatureCollection } from "geojson";
 
 export const Sidebar = () => {
   const [file, upload] = useUnit([geojsonModel.$file, geojsonModel.upload]);
@@ -27,6 +29,9 @@ export const Sidebar = () => {
         </label>
         <input id="upload" class="hidden" type="file" onChange={onChange} />
       </div>
+
+      <FeautureList />
+
       {file() && (
         <div class="mt-auto mx-auto font-bold text-sm">
           All features: {file()?.features?.length}

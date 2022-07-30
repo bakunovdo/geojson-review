@@ -1,15 +1,18 @@
 {
+  "plugins": [
+    "simple-import-sort",
+    "solid",
+    "effector",
+    "prettier"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:solid/recommended",
+    "plugin:effector/recommended",
+    "plugin:effector/scope",
     "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "simple-import-sort",
-    "solid",
-    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
