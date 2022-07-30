@@ -13,8 +13,8 @@ import { FeatureItem } from "./types";
 
 const domain = createDomain("gejson");
 
-export const nextPresed = hotkey({ key: "ArrowRight" });
-export const prevPresed = hotkey({ key: "ArrowLeft" });
+export const nextPresed = hotkey({ key: "ArrowRight", type: "keydown" });
+export const prevPresed = hotkey({ key: "ArrowLeft", type: "keydown" });
 
 export const upload = domain.createEvent<FeatureCollection<Geometry>>();
 export const geometryLIClicked = domain.createEvent<FeatureItem>();
