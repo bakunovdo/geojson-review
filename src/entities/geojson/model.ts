@@ -9,7 +9,7 @@ import { debug } from "patronum";
 import { createHashMap } from "./lib";
 // TODO find way how import geojson
 // import mock from "./mock_features.json";
-import { FeatureItem } from "./types";
+import { FeatureItem, OptionFit } from "./types";
 
 const domain = createDomain("gejson");
 
@@ -26,10 +26,47 @@ export const $currentFeature = domain.createStore<FeatureItem | null>(null);
 export const $file = domain.createStore<FeatureCollection | null>(null);
 
 export const $features = $file.map(
-  (state) => state?.features.map((item, id) => ({ id, feature: item })) || [],
+  (state): FeatureItem[] =>
+    state?.features.map((item, id) => ({
+      id,
+      feature: item,
+      properties: {
+        fit: OptionFit.Unknown,
+      },
+    })) || [],
 );
 
 const $lengthFeatures = $features.map((list) => list.length);
+
+export const $stats = $features.map((list) => {
+  let fitUnknown = 0;
+  let fitNo = 0;
+  let fitYes = 0;
+
+  list.forEach(({ properties }) => {
+    switch (properties.fit) {
+      case OptionFit.Unknown: {
+        fitUnknown += 1;
+        break;
+      }
+      case OptionFit.No: {
+        fitNo += 1;
+        break;
+      }
+      case OptionFit.Yes: {
+        fitYes += 1;
+        break;
+      }
+    }
+  });
+
+  return {
+    fitYes,
+    fitNo,
+    fitUnknown,
+    len: list.length,
+  };
+});
 
 export const $hashMap = $file.map(createHashMap);
 

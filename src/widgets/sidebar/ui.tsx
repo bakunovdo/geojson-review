@@ -1,6 +1,6 @@
 import { useUnit } from "effector-solid";
 
-import { FeaturesList, geojsonModel } from "entities/geojson";
+import { FeaturesList, fitStyles, geojsonModel, OptionFit } from "entities/geojson";
 
 import { parseJsonFile } from "shared/parser/json";
 import { InputChangeEvent } from "shared/types/solid";
@@ -8,7 +8,7 @@ import { InputChangeEvent } from "shared/types/solid";
 import { FeatureCollection } from "geojson";
 
 export const Sidebar = () => {
-  const list = useUnit(geojsonModel.$features);
+  const [list, stats] = useUnit([geojsonModel.$features, geojsonModel.$stats]);
   const [file, upload] = useUnit([geojsonModel.$file, geojsonModel.upload]);
 
   const onChange = async (e: InputChangeEvent) => {
@@ -33,8 +33,13 @@ export const Sidebar = () => {
       <FeaturesList items={list} />
 
       {file() && (
-        <div class="mt-auto mx-auto font-bold text-sm">
-          All features: {file()?.features?.length}
+        <div class="mt-auto font-bold text-sm flex flex-1 justify-between">
+          <div>
+            <span class={fitStyles[OptionFit.Unknown]}>{stats().fitUnknown}</span> /{" "}
+            <span class={fitStyles[OptionFit.No]}>{stats().fitNo}</span> /{" "}
+            <span class={fitStyles[OptionFit.Yes]}>{stats().fitYes}</span>
+          </div>
+          <div>{stats().len}</div>
         </div>
       )}
     </div>
